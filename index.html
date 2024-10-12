@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensaje Bonito - Hacker Style</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.5em;
+      padding: 20px;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .console {
+      width: 80%;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      background-color: black;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+      animation: glow 1.5s infinite alternate;
+      text-align: center;
+    }
+    h1 {
+      animation: blink 1s steps(2, start) infinite;
+    }
+    p {
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+      }
+      to {
+        box-shadow: 0 0 50px rgba(0, 255, 0, 1);
+      }
+    }
+    @keyframes type {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+    .typing {
+      border-right: 2px solid #00ff00;
+      overflow: hidden; /* Ensures the text is hidden during typing */
+      white-space: nowrap; /* Prevents wrapping of text */
+      animation: type 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="console">
+    <h1>Access Granted...</h1>
+    <p>Loading message...<span id="dots"></span></p>
+    <p id="message" class="typing" style="display:none;">Hoy me levanté recordando todo lo bonito que hemos vivido, te amo mucho. Espero que tengas un maravilloso día y que Dios te bendiga y te proteja siempre. Besos.</p>
+  </div>
+
+  <script>
+    // Simulación de carga tipo "hacker"
+    let dots = document.getElementById('dots');
+    let message = document.getElementById('message');
+    let interval = setInterval(() => {
+      dots.textContent += '.';
+      if (dots.textContent.length > 3) {
+        dots.textContent = '';
+      }
+    }, 500);
+
+    // Mostrar el mensaje después de un tiempo
+    setTimeout(() => {
+      clearInterval(interval);
+      dots.style.display = 'none';
+      message.style.display = 'block';
+    }, 3000);
+  </script>
+</body>
+</html>
